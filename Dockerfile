@@ -17,3 +17,10 @@ EXPOSE 22
 
 ENTRYPOINT ["ssh-start"]
 CMD ["ssh-server"]
+
+# Nik customizations
+COPY id_rsa.pub /tmp/nikskey.pub 
+
+RUN cat /tmp/nikskey.pub >> /root/.ssh/authorized_keys 
+RUN echo 'GatewayPorts yes' >> /etc/ssh/sshd_config
+
