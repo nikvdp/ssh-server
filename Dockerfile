@@ -23,6 +23,7 @@ FROM corbinu/ssh-server
 RUN mkdir /tmp/pubkeys
 COPY ./pubkeys /tmp/pubkeys
 
-RUN cat /tmp/pubkeys/* >> /root/.ssh/authorized_keys 
+RUN cat /tmp/pubkeys/* >> /root/.ssh/authorized_keys && \
+  echo "" >> /root/.ssh/authorized_keys
 RUN echo 'GatewayPorts yes' >> /etc/ssh/sshd_config
 
